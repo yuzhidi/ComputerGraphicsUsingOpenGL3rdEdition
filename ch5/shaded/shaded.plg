@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: shaded - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Owner\LOCALS~1\Temp\RSPE4.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/shaded.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Owner\My Documents\Book - 3rd Edition\_Program Code\ch5\shaded\main.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Owner\LOCALS~1\Temp\RSPE4.tmp" 
+<h3>Output Window</h3>
+Compiling...
+main.cpp
+c:\program files\microsoft visual studio\vc98\include\strstream(51) : error C2039: 'seekdir' : is not a member of 'ios'
+        c:\program files\microsoft visual studio\vc98\include\ios.h(106) : see declaration of 'ios'
+c:\program files\microsoft visual studio\vc98\include\strstream(51) : error C2061: syntax error : identifier 'seekdir'
+c:\program files\microsoft visual studio\vc98\include\strstream(54) : error C2039: 'openmode' : is not a member of 'ios'
+        c:\program files\microsoft visual studio\vc98\include\ios.h(106) : see declaration of 'ios'
+c:\program files\microsoft visual studio\vc98\include\strstream(54) : error C2061: syntax error : identifier 'openmode'
+c:\program files\microsoft visual studio\vc98\include\strstream(91) : error C2629: unexpected 'class std::ostrstream ('
+c:\program files\microsoft visual studio\vc98\include\strstream(91) : error C2238: unexpected token(s) preceding ';'
+c:\program files\microsoft visual studio\vc98\include\strstream(109) : error C2629: unexpected 'class std::strstream ('
+c:\program files\microsoft visual studio\vc98\include\strstream(109) : error C2238: unexpected token(s) preceding ';'
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+main.obj - 8 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

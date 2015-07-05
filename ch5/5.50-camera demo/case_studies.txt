@@ -1,0 +1,9 @@
+Case Studies
+
+1.  Improved Canvas Class (level of effort: I)
+
+Currently the Canvas class uses a GlutWin object in its constructor to open the window, this is acceptable for current uses of the Canvas since we are not tracking any state variables within the glutwin object.  However, if we wanted to improve the glutwin class to handle things like multiple windows, or switching into fullscreen mode it would be nice for our Canvas to be able to make use of these improvements.  Refactor the Canvas class so that it inherits from the GlutWin class.  This way, any functionality we build into our GlutWin class will be added to our Canvas class.  
+
+2.  Friction on an inclined plane (level of effort: II)
+
+Write an application that uses vectors to calculate the motion of a block that rests on an inclined plane.  

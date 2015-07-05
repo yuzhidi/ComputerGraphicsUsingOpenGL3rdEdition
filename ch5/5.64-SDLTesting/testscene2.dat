@@ -1,0 +1,8 @@
+light 20 60 30 .7 .7 .7 	!put a light at (20,60,30),color(.7 .7 .7)
+ambient .7 .7 .7 		! set material properties for all of the objects
+diffuse .6 .6 .6 
+background .9 .9 .9
+specular 1 1 1
+specularExponent 50
+
+texture 

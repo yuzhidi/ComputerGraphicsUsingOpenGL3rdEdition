@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "myRaytracer", "myRaytracer.vcproj", "{D64CC28D-2432-49AA-B2DE-14706672FC0A}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{D64CC28D-2432-49AA-B2DE-14706672FC0A}.Debug.ActiveCfg = Debug|Win32
+		{D64CC28D-2432-49AA-B2DE-14706672FC0A}.Debug.Build.0 = Debug|Win32
+		{D64CC28D-2432-49AA-B2DE-14706672FC0A}.Release.ActiveCfg = Release|Win32
+		{D64CC28D-2432-49AA-B2DE-14706672FC0A}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

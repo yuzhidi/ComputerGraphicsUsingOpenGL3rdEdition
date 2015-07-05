@@ -1,0 +1,76 @@
+Daryl Walters
+ECE 660 
+Project #3 & #4
+
+These projects are combined into one such that the source code and the dat file are the same for both projects.  However as the textures were not working I have commented out the sdl in the .dat file so that the castle portion for project 3 runs correctly.  
+
+There are several files associated with the project.  The source code files are:
+
+camera.cpp & camera.h
+RGBpixmap.cpp & RGBPixmap.h
+SDL_arch.cpp & SDL_arch.h
+testscene.cpp
+
+The dat files containing the sdl for the castle is in "stacked_cubes2.dat".
+
+There were also several .bmp files used in the attempt to get the textures working properly, these were:
+
+Mandrill.bmp
+wall1color.bmp
+wall2color.bmp
+wall3color.bmp
+
+Project #3
+
+For project #3 I developed a simple castle using the basic code provided.  Included in the castle design are a couple simple arches and an extruded quad strip based on a mathematical function.  
+
+The castle layout is defined in the stacked_cubes2.dat file, so named because the basic cube unit is used repeatedly to create the castle walls.  Several macros are used in the .dat file to create whole wall sections that use a group of cubes with other more cubes built up on top.
+
+This design method made creating the walls easier as windows are created simply by leaving out a cube.  In addition, a simple translate in the upward direction allows the walls to be stacked on top of each other.  There are two separate macros to create wall sections with and without arched doorways.  
+
+The arched doorways are created via the hlArch.dat file.  Using the hlArch data points an extruded quad strip is created giving the shape of the arch as defined by the two dimensional points laid out in the .dat file extruded into a third dimension.
+
+The function call to do this is the makeExtrudedQuadStrip function.  This is part of the Extrude class.  When an extrude keyword is seen in the .dat file (as it in the archWall macro) an instance of the Extrude class is created.  The extrude keyword is followed by an argument specifying the file to use for the data points of the quad strip.
+
+Each extrude object has its own mesh object as a member variable so that when the scene is drawn the extrude object will have a mesh to draw.  Upon calling the drawOpenGl method for the extrude object, the  makeExtrudedQuadStrip will be called to create the extruded quadstrip and then the mesh of the extrude object defined by the points of the quadstrip is drawn using the drawMesh method.
+
+There are a number of controls to use to navigate through the scene.  The keystrokes are defined by the table below:
+
+'f'  -  forward
+'F'  -  backward
+'z'  -  down
+'Z'  -  up 
+'s'  -  slide right
+'S'  -  slide left
+'y'  -  yaw right
+'Y'  -  yaw left
+'p'  -  pitch down
+'P'  -  pitch up
+'r'  -  roll counterclockwise
+'R'  -  roll clockwise
+'1', '2', '3', and '4' provide different vantage points of the castle
+
+Within the castle lies the extruded which uses the mathematical function to define its shape.  In this case it is a simple smooth tube with a about the y-axis.  This is created with the testscene.cpp and is such not controlled via the stacked_cubes2.dat file as the rest of the scene.  This was done for the sake of simplicity.  More objects with different shapes could be created by making more meshes and using different functions for each type of shape.
+
+Project #4
+
+For project #4 I tried several different approaches, unfortunately none worked with the rest of the castle scene.   The first was to create a spinning textured cube like that in the example in the textbook from directly in the code, without using the .dat file.  I could either display the spinning cube textured cube like in the text example or the rest of the castle scene I'd constructed, but not both at the same time. 
+
+I went on to try and incorporate the textured cube into the syntax for use in the sdl included in the .dat file while working on fixing the display problem.  To use the textured cube in sdl I created a TexturedCube class along with cases for the texturedCube keyword used in the sdl syntax.  
+
+The texturedCube class inherits from class Shape.  The class has a member variable for an array of textures that is an array of texture IDs that to be used in the glBindTexture call.  The textures use pixmaps of the RGBPixmap class.  The pixmap keyword in sdl is set up to take three arguments: the index into the global pixmap array (to hold all the pixmaps of the scene) of the pixmap array for this particular pixmap, the name of the bmp file to use for the pixmap, and the texture id to use for this pixmap when binding.  
+
+The texturedCube keyword in sdl then takes 6 arguments, which are texture ids for the pixmaps for each of the six sides.  The benefit of doing it this way is that any file can then be loaded up and it will for a side of the cube and we can then use its texture id assigned in the sdl to put it on one of the sides of the textured cube.  
+
+As mentioned above however, there were problems displaying the textured cube.  Through different variations of code I could get the textured cube and have it spin as in the textbook example, but it would not work with the rest of the scene.  This led me to believe that the problem had to do with the way in which the textured cube was being displayed, possibly due to the mode of the display (as specified in the glTexEnvf call?).     
+
+Setting up of the points for the texture to be mapped to could also be a potential problem, however I tried several different setups for mapping the points.  The mapping that I used worked in the spinning textured cube example so this seems unlikely.
+
+Another potential source of the problem could be in the construction of the pixmaps.  The processing for setting up the pixmap could be incorrect or potentially the .bmp files used were not correctly set up.  However I did set up the .bmp files to be square and have pixel sizes that were powers of two which seemed to be necessary in getting the spinning textured cube example to work.
+
+NOTE:  There have been some problems running the code on certain machines.  It seems to run fine on my home machine, but I have had problems running the release version on other machines.  In these cases the problems seems to be in the call to makeSmoothTube for creating the curved tube as the release version always seems to work if I comment out the makeSmoothTube call in testscene.cpp (of course then the tube isn't displayed).  In all cases however the code runs fine when run in debug mode.
+
+Any questions or problems with the files please contact me at darwalters@hotmail.com or daryl.walters 
+@gd-ais.com.  And again all thanks for allowing me the opportunity to get a grade for the class.
+
+-Daryl

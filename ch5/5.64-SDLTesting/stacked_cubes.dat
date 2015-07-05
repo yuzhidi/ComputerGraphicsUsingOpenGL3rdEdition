@@ -1,0 +1,245 @@
+! myScene1.dat - f.s.hill 
+! has several simple glowing objects 
+
+light -50 50 50 1 1 1
+light 40 0 -40 1 1 1
+light 40  40 40 .7 .7 .7
+
+
+
+!light -4 4 0 .5 .5 .8
+!light -4 4 0 .5 .5 .8
+
+background .9 .9 .9	! grey background lighting
+emissive .6 0 0 	! objects emit red 
+
+!background .8 .8 .8	! white background lighting
+!emissive 1 1 1 		! object emit white
+
+!ambient .2 .2 .2 
+!ambient 0.9 0.9 .8 
+diffuse .8 .7 .6 
+
+! mess with the lighting
+ambient .5 .5 .5 
+
+reflectivity 0.3
+!textureType -0.4
+
+
+def wallsection {
+	! put in a tall rectagular strip
+	push scale 2 4 1
+	cube
+	pop
+
+	! translate 2 in the x direction
+	push
+	translate 3 -2 0
+	push
+	scale 1 2 1
+	cube
+	pop
+
+	! translate 4 in the y direction (up)
+	push translate 0 5 0 
+	cube
+	pop
+
+	! translate over another 2 and 
+	! then push the scale to stretch the cube
+	translate 3 2 0
+	push scale 2 4 1
+	cube
+	pop
+	pop
+}
+
+def tallwallsection {
+	push 
+	use wallsection
+	translate 0 8 0
+	use wallsection
+	pop
+}
+
+def longWall {
+	push
+
+	use wallsection
+	translate 8 0 0
+	use wallsection
+	!translate 8 0 0
+	!use wallsection
+	pop
+}
+
+def longTallWall {
+	push
+	use tallwallsection
+	translate 8 0 0
+	use tallwallsection
+	!translate 8 0 0
+	!use tallwallsection
+	pop
+}
+
+def longWallPerimeter {
+	push
+	use longWall
+
+	push
+	rotate 90 0 1 0 
+	translate 3 0 -1
+	use longWall
+	pop
+
+	push
+	translate 24 0 0
+	rotate 90 0 1 0 
+	translate 3 0 -1
+	use longWall
+	pop
+
+	push
+	translate 0 0 -26
+	use longWall
+	pop
+	pop
+}
+
+def tallWallPerimeter {
+	push
+	use longTallWall
+
+	push
+	rotate 90 0 1 0 
+	translate 3 0 -1
+	use longTallWall
+	pop
+
+	push
+	translate 24 0 0
+	rotate 90 0 1 0 
+	translate 3 0 -1
+	use longTallWall
+	pop
+
+	push
+	translate 0 0 -26
+	use longTallWall
+	pop
+	pop
+}
+
+!use longWallPerimeter
+!use longTallWall
+
+!use tallWallPerimeter
+
+!rotate -90 1 0 0 
+!translate 16 4 8
+!scale 0.3 0.3 0.3
+!mesh pawn.3vn !make a mesh 
+
+
+def tower {
+	push
+	rotate 90 1 0 0
+	!intersection
+	!difference
+	!union
+	translate 0 0 -26
+	push
+	scale 4 4 30
+	cylinder
+	pop
+	push
+	scale 3 3 30
+	cylinder
+	pop
+
+	pop
+}
+
+def archWall {
+	! the front of the castle
+	use tower
+
+	push
+	translate 5 0 0 
+	use longTallWall
+	pop
+
+	push
+	translate 21 -4 -1.5
+	extrude hlArch2.dat
+	pop
+
+	push
+	translate 23 8 0
+	use wallsection
+	pop
+
+	push
+	translate 33 0 0 
+	use longTallWall
+	pop
+
+	push
+	translate 52 0 0
+	use tower
+	pop
+	! end the front wall
+}
+!use archWall
+use longTallWall
+
+
+! the left wall
+push
+rotate 90 0 1 0
+translate 5 0 0
+use longTallWall
+translate 18 0 0
+use tallwallsection
+translate 10 0 0
+use longTallWall
+pop
+! end the left wall
+
+! the right wall
+push
+translate 52 0 0
+rotate 90 0 1 0
+translate 5 0 0
+use longTallWall
+translate 18 0 0
+use tallwallsection
+translate 10 0 0
+use longTallWall
+pop
+! end the right wall
+
+push translate 0 0 -52
+use archWall
+pop
+
+! the ground
+push
+translate 27 -5 -27
+scale 36 1 36
+cube
+pop
+! end ground
+
+! the roof
+push
+translate 26 12 -26
+scale 28 1 28
+cube
+pop
+! end the roof
+
+
+

@@ -1,0 +1,243 @@
+light -10 0 20 .6 .6 .6
+specular 1 0 0
+makePixmap 1 neat.bmp
+makePixmap 2 cool.bmp
+
+def jackpart {
+	push
+		scale .2 .2 1.0
+		sphere
+	pop
+	push
+		translate 0 0 1.2
+		scale .2 .2 .2
+		sphere
+	pop
+	push
+		translate 0 0 -1.2
+		scale .2 .2 .2
+		sphere
+	pop		
+}
+
+def jack {
+	push
+		use jackpart
+		rotate 90 0 1 0
+		use jackpart
+		rotate 90 1 0 0
+		use jackpart
+	pop
+}
+
+def octo {
+	push		
+		translate 0 1 0
+		scale .2 .2 .2
+		sphere
+	pop
+	push		
+		translate 0 -1 0
+		scale .2 .2 .2
+		sphere
+	pop
+	push		
+		translate 1 0 0
+		scale .2 .2 .2
+		sphere
+	pop
+	push		
+		translate -1 0 0
+		scale .2 .2 .2
+		sphere
+	pop
+	push		
+		translate 0 0 1
+		scale .2 .2 .2
+		sphere
+	pop
+	push		
+		translate 0 0 -1
+		scale .2 .2 .2
+		sphere
+	pop
+	push
+		rotate 45 0 1 0
+		translate .7 0 0
+		scale .1 .1 .507
+		sphere
+	pop
+	push
+		rotate 45 0 1 0
+		translate -.7 0 0
+		scale .1 .1 .507
+		sphere
+	pop
+	push
+		rotate -45 0 1 0
+		translate .7 0 0
+		scale .1 .1 .507
+		sphere
+	pop
+	push
+		rotate -45 0 1 0
+		translate -.7 0 0
+		scale .1 .1 .507
+		sphere
+	pop
+	push
+		rotate 45 1 0 0
+		translate 0 .7 0
+		scale .1 .1 .507
+		sphere
+	pop
+	push
+		rotate 45 1 0 0
+		translate 0 -.7 0
+		scale .1 .1 .507
+		sphere
+	pop
+	push
+		rotate -45 1 0 0
+		translate 0 .7 0
+		scale .1 .1 .507
+		sphere
+	pop
+	push
+		rotate -45 1 0 0
+		translate 0 -.7 0
+		scale .1 .1 .507
+		sphere
+	pop
+	push
+		rotate 90 0 1 0
+		rotate -45 1 0 0
+		translate 0 .7 0
+		scale .1 .1 .507
+		sphere
+	pop
+	push
+		rotate 90 0 1 0
+		rotate -45 1 0 0
+		translate 0 -.7 0
+		scale .1 .1 .507
+		sphere
+	pop
+	push
+		rotate 90 0 1 0
+		rotate 45 1 0 0
+		translate 0 .7 0
+		scale .1 .1 .507
+		sphere
+	pop
+	push
+		rotate 90 0 1 0
+		rotate 45 1 0 0
+		translate 0 -.7 0
+		scale .1 .1 .507
+		sphere
+	pop
+}
+
+! temp wall
+push
+	emissive .1 .1 .1
+	translate 0.0 -5.0 0.0
+	rotate 90 1.0 0.0 0.0	
+	scale 20.0 20.0 1.0
+	texture 1
+	parameters 4 -1 -1 1 1
+	square
+pop
+
+! make a circle wall
+push
+	emissive 0.5 0.5 0.5
+	translate 0.0 0.0 5.0
+	rotate 90 0.0 1.0 0.0
+	scale 5.0 5.0 0.5
+	texture -1
+	cylinder
+pop
+
+! place some tubes by the circle wall
+push
+	emissive .8 .8 .2
+	translate -3.0 -4.5 2.0
+	rotate 90 0.0 1.0 0.0
+	push
+		scale .5 .5 6.0
+		texture -2		
+		taperedTube 1.0 .05
+	pop
+	translate -6.0 0.0 0.0
+	scale .5 .5 6.0
+	taperedTube 1.0 .05	
+pop
+
+! place a jack inside of an octo
+push
+	emissive 0.3 0.8 0.3
+	translate 6.0 0.0 5.0
+	push
+		scale .5 .5 .5
+		texture -1
+		use jack
+	pop
+	emissive 0.8 0.3 0.3
+	texture -3
+	use octo
+pop
+
+! place a mesh into the scene
+push
+	emissive .7 .7 .7
+	translate 10.0 -2.5 10.0
+	push
+		scale .5 .5 .5
+		texture 0
+		dodecahedron
+	pop
+	translate 0.0 -1.5 0.0
+	texture 2
+	cube
+pop
+
+push
+	emissive .7 .7 .7
+	translate 10.0 -2.5 0.0
+	push
+		scale .5 .5 .5
+		texture 0
+		dodecahedron
+	pop
+	translate 0.0 -1.5 0.0
+	texture 2
+	cube
+pop
+
+! make a base beneath the jack-octo
+push
+	emissive 0.4 0.3 0.2
+	specular .4 .6 .8
+	ambient .6 .6 .6
+	diffuse .8 .6 .4
+	specularExponent .6
+	translate 6.0 -4.0 5.0
+	rotate 90 1.0 0.0 0.0
+	push
+		texture -3
+		scale 3.0 3.0 1.0
+		taperedCylinder .75		
+	pop
+	! place a tube on top of the cylinder
+	push
+		emissive .1 .1 .1
+		specular .7 .2 .3
+		ambient .3 .3 .3
+		diffuse .5 .3 .1
+		translate 0.0 0.0 -1.0
+		scale 2.0 2.0 1.0
+		taperedTube .75 .15
+	pop
+pop

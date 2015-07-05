@@ -1,0 +1,49 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Gingerbread Man - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP53.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/Gingerbread Man.pdb" /debug /machine:I386 /out:"Debug/Gingerbread Man.exe" /pdbtype:sept 
+".\Debug\Gingerbread Man.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP53.tmp"
+<h3>Output Window</h3>
+Linking...
+Gingerbread Man.obj : error LNK2001: unresolved external symbol _gluPerspective@32
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glLoadIdentity@0
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glMatrixMode@4
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glViewport@16
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glPointSize@4
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glClear@4
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glHint@8
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glDepthFunc@4
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glEnable@4
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glClearDepth@8
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glColor3f@12
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glClearColor@16
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glShadeModel@4
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glFlush@0
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glEnd@0
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glVertex2f@8
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glBegin@4
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glScaled@24
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__glTranslatef@12
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__wglDeleteContext@4
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__wglMakeCurrent@8
+Gingerbread Man.obj : error LNK2001: unresolved external symbol __imp__wglCreateContext@4
+LIBCD.lib(crt0.obj) : error LNK2001: unresolved external symbol _main
+Debug/Gingerbread Man.exe : fatal error LNK1120: 23 unresolved externals
+Error executing link.exe.
+
+
+
+<h3>Results</h3>
+Gingerbread Man.exe - 24 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
